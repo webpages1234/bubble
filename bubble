@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouncing Bubble</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #d0f0fd 0%, #a0d8ef 100%);
+      overflow: hidden;
+      font-family: 'Baloo 2', cursive;
+      position: relative;
+    }
+
+    .be-header {
+      position: absolute;
+      top: 12px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #444;
+      font-family: 'Assistant', sans-serif;
+      z-index: 20;
+    }
+
+    h1 {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      text-align: center;
+      font-size: 2.8rem;
+      color: #004477;
+      text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.9);
+      z-index: 10;
+      font-family: 'Baloo 2', cursive;
+    }
+
+    .bubble {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(173,216,230,0.2) 40%, rgba(0,191,255,0.05) 80%, transparent);
+      border-radius: 50%;
+      box-shadow: inset 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(0,191,255,0.3);
+      transition: transform 0.05s ease, box-shadow 0.2s ease;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .bubble::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 25%;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, rgba(255,255,255,0.6), transparent);
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+  </style>
+</head>
+<body>
+  <div class="be-header">ב״ה</div>
+  <h1>Try to Pop the Bubble</h1>
+  <div class="bubble" id="bubble"></div>
+
+  <script>
+    (function() {
+      const bubble = document.getElementById('bubble');
+      let clickCount = 0;
+
+      let posX = 100;
+      let posY = 100;
+      let dx = 2;
+      let dy = 2;
+      const radius = 100;
+      let popped = false;
+
+      function moveBubble() {
+        if (popped) return;
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        posX += dx;
+        posY += dy;
+
+        if (posX + radius * 2 >= width || posX <= 0) dx *= -1;
+        if (posY + radius * 2 >= height || posY <= 0) dy *= -1;
+
+        bubble.style.left = `${posX}px`;
+        bubble.style.top = `${posY}px`;
+
+        requestAnimationFrame(moveBubble);
+      }
+
+      function pokeEffect() {
+        bubble.style.transition = 'transform 0.05s';
+        bubble.style.transform = 'scale(0.85)';
+        setTimeout(() => {
+          if (!popped) bubble.style.transform = 'scale(1)';
+        }, 80);
+
+        const flash = document.createElement('div');
+        flash.style.position = 'absolute';
+        flash.style.width = '20px';
+        flash.style.height = '20px';
+        flash.style.borderRadius = '50%';
+        flash.style.background = 'rgba(255,255,255,0.6)';
+        flash.style.left = `${posX + radius - 10}px`;
+        flash.style.top = `${posY + radius - 10}px`;
+        flash.style.boxShadow = '0 0 10px rgba(255,255,255,0.8)';
+        flash.style.pointerEvents = 'none';
+        document.body.appendChild(flash);
+
+        setTimeout(() => flash.remove(), 200);
+      }
+
+      function popBubble() {
+        popped = true;
+        bubble.style.transition = 'all 0.3s ease';
+        bubble.style.transform = 'scale(0)';
+        bubble.style.opacity = '0';
+        alert('The bubble finally popped! 🎉');
+      }
+
+      bubble.addEventListener('click', () => {
+        if (popped) return;
+
+        clickCount++;
+        if (clickCount >= 100) {
+          popBubble();
+        } else {
+          pokeEffect();
+        }
+      });
+
+      moveBubble();
+    })();
+  </script>
+</body>
+</html>
