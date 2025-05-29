@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Bouncing Bubble&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Assistant:wght@600&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at center, #d0f0fd 0%, #a0d8ef 100%);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Baloo 2', cursive;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.be-header {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #444;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Assistant', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>z-index: 20;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #004477;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>z-index: 10;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Baloo 2', cursive;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bubble {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 200px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 200px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(173,216,230,0.2) 40%, rgba(0,191,255,0.05) 80%, transparent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: inset 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(0,191,255,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.05s ease, box-shadow 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.bubble::after {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>content: '';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 20%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>left: 25%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle, rgba(255,255,255,0.6), transparent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>filter: blur(4px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="be-header"&gt;ב״ה&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;Try to Pop the Bubble&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="bubble" id="bubble"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>(function() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const bubble = document.getElementById('bubble');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let clickCount = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>let posX = 100;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let posY = 100;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let dx = 2;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let dy = 2;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const radius = 100;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let popped = false;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function moveBubble() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (popped) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const width = window.innerWidth;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const height = window.innerHeight;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>posX += dx;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>posY += dy;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (posX + radius * 2 &gt;= width || posX &lt;= 0) dx *= -1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (posY + radius * 2 &gt;= height || posY &lt;= 0) dy *= -1;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>bubble.style.left = `${posX}px`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bubble.style.top = `${posY}px`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>requestAnimationFrame(moveBubble);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function pokeEffect() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bubble.style.transition = 'transform 0.05s';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bubble.style.transform = 'scale(0.85)';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (!popped) bubble.style.transform = 'scale(1)';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 80);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const flash = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.position = 'absolute';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.width = '20px';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.height = '20px';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.borderRadius = '50%';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.background = 'rgba(255,255,255,0.6)';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.left = `${posX + radius - 10}px`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.top = `${posY + radius - 10}px`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.boxShadow = '0 0 10px rgba(255,255,255,0.8)';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>flash.style.pointerEvents = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.appendChild(flash);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; flash.remove(), 200);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>function popBubble() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>popped = true;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bubble.style.transition = 'all 0.3s ease';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bubble.style.transform = 'scale(0)';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>bubble.style.opacity = '0';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert('The bubble finally popped! 🎉');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>bubble.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (popped) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>clickCount++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (clickCount &gt;= 100) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>popBubble();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>pokeEffect();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>moveBubble();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>})();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
